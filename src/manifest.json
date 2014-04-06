@@ -1,0 +1,25 @@
+{
+	"name": "Better Google Tasks",
+	"version": "6.0.0",
+	"description": "Displays Google Tasks' full view in a popup and a task count from your default task list or all task lists in the taskbar.",
+	"author": "Niklas Heer, Chris Wiegman",
+	"manifest_version": 2,
+	"background": {
+		"page": "html/background.html"
+	},
+	"browser_action": {
+		"default_icon": "images/icon.png",
+		"default_popup": "html/tasks.html",
+		"default_title": ""
+	},
+	"icons": {
+		"128": "images/icon.png"
+	},
+	"permissions": [
+		"notifications",
+		"tabs",
+		"https://mail.google.com/"
+	],
+	"options_page": "html/options.html",
+	"update_url": "http://clients2.google.com/service/update2/crx"
+}

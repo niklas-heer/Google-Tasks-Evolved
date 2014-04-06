@@ -1,0 +1,128 @@
+/*
+Get Task items for printing
+*/
+
+
+(function() {
+  var getPrint;
+
+  getPrint = function() {
+    var murl, url;
+    url = "https://mail.google.com/tasks/ig?listid=";
+    murl = "https://mail.google.com/tasks/m";
+    $.ajax({
+      type: "GET",
+      url: murl,
+      async: false,
+      data: null,
+      dataType: "html",
+      success: function(html) {
+        var currid, currtitle, dd, i, j, l, listids, listtitles, mm, output, startpos, str, strlength, today, yy;
+        listids = [];
+        listtitles = [];
+        startpos = void 0;
+        strlength = void 0;
+        str = void 0;
+        currid = void 0;
+        currtitle = void 0;
+        i = void 0;
+        today = new Date();
+        yy = today.getFullYear();
+        mm = today.getMonth() + 1;
+        dd = today.getDate();
+        output = "<h1>Task list printed " + mm + "/" + dd + "/" + yy + "</h1>";
+        output = output + "<ul>";
+        str = html;
+        strlength = str.length;
+        startpos = str.indexOf("<option value=");
+        i = 0;
+        while (strlength > 0 && startpos > -1) {
+          str = str.substr(startpos + 15, strlength);
+          strlength = str.length;
+          currid = str.substr(0, str.indexOf("\""));
+          str = str.substr(str.indexOf(">") + 1, strlength);
+          currtitle = str.substr(0, str.indexOf("</option>"));
+          strlength = str.length;
+          startpos = str.indexOf("<option value=");
+          if (listids.length > 0) {
+            j = 0;
+            while (j < listids.length) {
+              if (listids[j] === currid) {
+                currid = -1;
+              }
+              j++;
+            }
+          } else {
+            listids[i] = currid;
+            listtitles[i] = currtitle;
+          }
+          if (currid !== -1) {
+            listids[i] = currid;
+            listtitles[i] = currtitle;
+          }
+          i++;
+        }
+        l = 0;
+        while (l < listids.length) {
+          output = output + "<li class=\"list\">";
+          output = output + "<h2>" + listtitles[l] + "</h2>";
+          output = output + "<ul>";
+          $.ajax({
+            type: "GET",
+            url: url + listids[l],
+            async: false,
+            data: null,
+            dataType: "html",
+            success: function(html) {
+              var data, odd;
+              if (html.match(/_setup\((.*)\)\}/)) {
+                data = JSON.parse(RegExp.$1);
+                odd = false;
+                $.each(data.t.tasks, function(i, val) {
+                  var eday, emonth, eyear, month;
+                  if (val.name.length > 0) {
+                    if (odd) {
+                      output = output + "<li class=\"task\">";
+                      odd = false;
+                    } else {
+                      output = output + "<li class=\"task even\">";
+                      odd = true;
+                    }
+                    if (val.completed) {
+                      output = output + "<s>";
+                    }
+                    output = output + "<h3>" + val.name + "</h3>";
+                    if (val.task_date) {
+                      month = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                      eyear = val.task_date.substr(0, 4);
+                      emonth = val.task_date.substr(4, 2) - 1;
+                      eday = val.task_date.substr(6, 2);
+                      output = output + "<span class=\"due\">Due: " + month[emonth] + " " + eday + ", " + eyear + "</span>";
+                    }
+                    if (val.notes) {
+                      output = output + "<span class=\"notes\">" + val.notes + "</span>";
+                    }
+                    if (val.completed) {
+                      output = output + "</s>";
+                    }
+                    output = output + "</li>";
+                  }
+                });
+              }
+            }
+          });
+          output = output + "</ul>";
+          output = output + "</li>";
+          l++;
+        }
+        output = output + "</ul>";
+        document.write(output);
+      }
+    });
+  };
+
+  $(document).ready(function() {
+    $("body").append(getPrint());
+  });
+
+}).call(this);

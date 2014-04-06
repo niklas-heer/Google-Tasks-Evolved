@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+
+# PROJECT: Better Google Tasks
+#
+# AUTHOR : Niklas Heer (niklas.heer@gmail.com)
+# DATE   : 6.04.2014
+# LICENSE: GPL 3.0
+
+import os
+import glob
+import sys
+import argparse
+from subprocess import call, Popen, PIPE, STDOUT
+
+def createZipFile(fs_version):
+	"""
+		createZipFile(fs_version): creates the zip file.
+	"""
+
+	filename = appName + file_sufix + ".zip"
+
+	os.chdir("src")
+	zip = Popen(['zip', '-FSr@', "../"+release_path+filename], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+
+	zip_stdout = zip.communicate(input='css\nimages\nhtml\njs\nmanifest.json')[0]
+	print(zip_stdout)
+	os.chdir(home)
+
+	return release_path+filename
+
+
+def createRelease(version):
+
+	global file_sufix, release_path, appFile
+
+	# print menu
+	print "====== Release Build Script ======"
+	print "[INFO] Builds a new release for " + appName
+
+	if not version:
+		version = raw_input('Enter version: ')
+
+	# create variables
+	file_sufix += version
+	release_path = '_releases/'
+
+	print "\n[INFO] Creating Release " + version
+
+	# create Zip
+	print "[INFO] Creating ZIP File!"
+	appFile = createZipFile(version)
+	print "[SUCCESS] ZIP File created!"
+
+	# success!
+	print "\n[INFO] The release was successfully build."
+
+"""
+	Main Programm
+"""
+parser = argparse.ArgumentParser(description='This programm can build a release of the extension Better Google Tasks.')
+parser.add_argument('-v', '--version', help='The version number of the release. (e.g. 1.0.0)')
+parser.add_argument('-n', '--name', help='Releasename.')
+args = parser.parse_args()
+
+# Define global variables
+appName = "Better-Google-Tasks"
+home = os.getcwd()
+
+file_sufix = "-"
+release_path = ""
+appFile = ""
+
+if args.version:
+	createRelease(args.version)
+elif args.name:
+	appName = args.name
+else:
+	createRelease("")
