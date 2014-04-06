@@ -1,11 +1,11 @@
-# PROJECT: Better-Google-Tasks
+# PROJECT: Google-Tasks-Evolved
 #
-# AUTHOR : Niklas Heer <niklas.heer@gmail.com>, Chris Wiegman
+# AUTHOR : Niklas Heer <niklas.heer@gmail.com>
 # DATE   : 6.04.2014
-# LICENSE: GPL 3.0
+# LICENSE: GPL 2.0
 
 $(document).ready ->
-	localStorage.removeItem "com.bit51.chrome.bettergoogletasks.last_notify"
+	localStorage.removeItem "de.wedevelop.chrome.googletasksevolved.last_notify"
 	address = "https://mail.google.com/tasks/m"
 	frame = document.createElement("iframe")
 	frame.setAttribute "src", address
@@ -19,7 +19,7 @@ updateData()
 
 #Set the extension version
 getManifest (manifest) ->
-	localStorage.setItem "com.bit51.chrome.bettergoogletasks.version", manifest.version
+	localStorage.setItem "de.wedevelop.chrome.googletasksevolved.version", manifest.version
 	return
 
 #Set up the appropriate listeners

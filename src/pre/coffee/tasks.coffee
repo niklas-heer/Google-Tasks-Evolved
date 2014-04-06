@@ -1,8 +1,8 @@
-# PROJECT: Better-Google-Tasks
+# PROJECT: Google-Tasks-Evolved
 #
-# AUTHOR : Niklas Heer <niklas.heer@gmail.com>, Chris Wiegman
+# AUTHOR : Niklas Heer <niklas.heer@gmail.com>
 # DATE   : 6.04.2014
-# LICENSE: GPL 3.0
+# LICENSE: GPL 2.0
 
 ###
 Find the current tab
@@ -28,8 +28,8 @@ window.getTasksTab = (callback) ->
 Handle opening tasks in new window or new tab
 ###
 window.openTasks = ->
-	openbehavior = localStorage.getItem("com.bit51.chrome.bettergoogletasks.openbehavior") or TASKS_OPENBEHAVIOR
-	defaultlist = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_list") or TASKS_DEFAULT_LIST
+	openbehavior = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.openbehavior") or TASKS_OPENBEHAVIOR
+	defaultlist = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_list") or TASKS_DEFAULT_LIST
 	if openbehavior is "1"
 		unless defaultlist is ""
 			chrome.windows.create url: "https://mail.google.com/tasks/canvas?listid=" + defaultlist
@@ -71,10 +71,10 @@ window.getTaskFrame = ->
 	port = chrome.extension.connect(name: "BGT")
 	port.postMessage message: "Open"
 	address = undefined
-	defaultlist = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_list") or TASKS_DEFAULT_LIST
-	default_pop = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_pop") or TASKS_POPUP
-	default_width = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_width") or TASKS_WIDTH
-	default_height = localStorage.getItem("com.bit51.chrome.bettergoogletasksJSON.parseeval.default_height") or TASKS_HEIGHT
+	defaultlist = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_list") or TASKS_DEFAULT_LIST
+	default_pop = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_pop") or TASKS_POPUP
+	default_width = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_width") or TASKS_WIDTH
+	default_height = localStorage.getItem("de.wedevelop.chrome.googletasksevolvedJSON.parseeval.default_height") or TASKS_HEIGHT
 	if default_pop is "full"
 		address = "https://mail.google.com/tasks/canvas"
 	else
@@ -95,7 +95,7 @@ window.getTaskFrame = ->
 
 $(document).ready ->
 	getTaskFrame()
-	openbehavior = localStorage.getItem("com.bit51.chrome.bettergoogletasks.openbehavior") or TASKS_OPENBEHAVIOR
+	openbehavior = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.openbehavior") or TASKS_OPENBEHAVIOR
 	if openbehavior is "1"
 		$("#footer").prepend "<span id=\"windowLink\" class=\"link\">Open in New Window <img src=\"/images/external.png\" alt=\"Open tasks in a new window\" /></span> | "
 	else

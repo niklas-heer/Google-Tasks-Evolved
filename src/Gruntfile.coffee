@@ -23,9 +23,9 @@ module.exports = (grunt) ->
 		uglify:
 			options:
 				banner: '/*
-\nAuthor:     Niklas Heer, Chris Wiegman
-\nProject:    Better Google Tasks
-\nLicense:    GPL v3
+\nAuthor:     Niklas Heer
+\nProject:    Google Tasks Evolved
+\nLicense:    GPL v2
 \nBuild date: <%= grunt.template.today(\"dd.mm.yyyy\") %> \n
 */\n'
 

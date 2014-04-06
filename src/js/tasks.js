@@ -29,8 +29,8 @@ Find the current tab
 
   window.openTasks = function() {
     var defaultlist, openbehavior;
-    openbehavior = localStorage.getItem("com.bit51.chrome.bettergoogletasks.openbehavior") || TASKS_OPENBEHAVIOR;
-    defaultlist = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_list") || TASKS_DEFAULT_LIST;
+    openbehavior = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.openbehavior") || TASKS_OPENBEHAVIOR;
+    defaultlist = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_list") || TASKS_DEFAULT_LIST;
     if (openbehavior === "1") {
       if (defaultlist !== "") {
         chrome.windows.create({
@@ -91,10 +91,10 @@ Find the current tab
       message: "Open"
     });
     address = void 0;
-    defaultlist = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_list") || TASKS_DEFAULT_LIST;
-    default_pop = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_pop") || TASKS_POPUP;
-    default_width = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_width") || TASKS_WIDTH;
-    default_height = localStorage.getItem("com.bit51.chrome.bettergoogletasksJSON.parseeval.default_height") || TASKS_HEIGHT;
+    defaultlist = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_list") || TASKS_DEFAULT_LIST;
+    default_pop = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_pop") || TASKS_POPUP;
+    default_width = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_width") || TASKS_WIDTH;
+    default_height = localStorage.getItem("de.wedevelop.chrome.googletasksevolvedJSON.parseeval.default_height") || TASKS_HEIGHT;
     if (default_pop === "full") {
       address = "https://mail.google.com/tasks/canvas";
     } else {
@@ -118,7 +118,7 @@ Find the current tab
   $(document).ready(function() {
     var openbehavior;
     getTaskFrame();
-    openbehavior = localStorage.getItem("com.bit51.chrome.bettergoogletasks.openbehavior") || TASKS_OPENBEHAVIOR;
+    openbehavior = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.openbehavior") || TASKS_OPENBEHAVIOR;
     if (openbehavior === "1") {
       $("#footer").prepend("<span id=\"windowLink\" class=\"link\">Open in New Window <img src=\"/images/external.png\" alt=\"Open tasks in a new window\" /></span> | ");
     } else {

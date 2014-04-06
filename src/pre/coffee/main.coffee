@@ -1,8 +1,8 @@
-# PROJECT: Better-Google-Tasks
+# PROJECT: Google-Tasks-Evolved
 #
-# AUTHOR : Niklas Heer <niklas.heer@gmail.com>, Chris Wiegman
+# AUTHOR : Niklas Heer <niklas.heer@gmail.com>
 # DATE   : 6.04.2014
-# LICENSE: GPL 3.0
+# LICENSE: GPL 2.0
 
 window.TASKS_URL           = "https://mail.google.com/tasks/canvas"
 window.TASKS_COUNT         = "all"

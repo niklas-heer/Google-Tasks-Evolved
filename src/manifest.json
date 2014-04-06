@@ -1,8 +1,8 @@
 {
-	"name": "Better Google Tasks",
-	"version": "6.0.0",
+	"name": "Google Tasks Evolved",
+	"version": "1.0.0",
 	"description": "Displays Google Tasks' full view in a popup and a task count from your default task list or all task lists in the taskbar.",
-	"author": "Niklas Heer, Chris Wiegman",
+	"author": "Niklas Heer",
 	"manifest_version": 2,
 	"background": {
 		"page": "html/background.html"

@@ -28,10 +28,10 @@ function getManifest( callback ) {
  */
 function updateData() {
 
-	var default_count = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.default_count' ) || TASKS_COUNT; //figure out how we should count tasks
-		var countinterval = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.countinterval' ) || TASKS_COUNTINTERVAL; //interval to refresh the badge count
-		var count_list = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.count_list' ) || TASKS_LIST; //show only the lists they want
-		var default_list = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.default_list' ) || TASKS_DEFAULT_LIST; //The default tasks list
+	var default_count = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.default_count' ) || TASKS_COUNT; //figure out how we should count tasks
+		var countinterval = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.countinterval' ) || TASKS_COUNTINTERVAL; //interval to refresh the badge count
+		var count_list = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.count_list' ) || TASKS_LIST; //show only the lists they want
+		var default_list = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.default_list' ) || TASKS_DEFAULT_LIST; //The default tasks list
 	var updateTaskInterval = countinterval * ( 1000 * 60 );
 
 	badgeCount = 0;
@@ -205,7 +205,7 @@ function dataError() {
  */
 function getTasks( list ) {
 
-	var default_count = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.default_count' ) || TASKS_COUNT; //figure out how we should count tasks
+	var default_count = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.default_count' ) || TASKS_COUNT; //figure out how we should count tasks
 	var todays_date = todaysDate();
 
 	var xhr = new XMLHttpRequest();
@@ -267,7 +267,7 @@ function getTasks( list ) {
  */
 function updateBadge() {
 
-	var default_count = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.default_count' ) || TASKS_COUNT; //figure out how we should count tasks
+	var default_count = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.default_count' ) || TASKS_COUNT; //figure out how we should count tasks
 
 	if ( default_count != 'none' ) {
 
@@ -313,7 +313,7 @@ function updateBadge() {
 
 			} else { //there are no tasks
 
-				var hide_zero = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.hide_zero' ) || TASKS_ZERO; //do we hide the zero count or not
+				var hide_zero = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.hide_zero' ) || TASKS_ZERO; //do we hide the zero count or not
 
 				//set badge color to zero
 				chrome.browserAction.setBadgeBackgroundColor( {
@@ -363,13 +363,13 @@ function updateBadge() {
  */
 function getNotifications() {
 
-	var lastNotify = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.last_notify' ) || 0; //the time of the last update
+	var lastNotify = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.last_notify' ) || 0; //the time of the last update
 
 	if ( lastNotify < ( new Date().getTime() - ( 1000 * 60 * 60 * 12 ) ) ) {
 
-		var notify = localStorage.getItem( 'com.bit51.chrome.bettergoogletasks.notify' ) || TASKS_NOTIFY; //The user selected option for notifications
+		var notify = localStorage.getItem( 'de.wedevelop.chrome.googletasksevolved.notify' ) || TASKS_NOTIFY; //The user selected option for notifications
 
-				localStorage.setItem( 'com.bit51.chrome.bettergoogletasks.last_notify', new Date().getTime() );
+				localStorage.setItem( 'de.wedevelop.chrome.googletasksevolved.last_notify', new Date().getTime() );
 
 		if ( notify > 0 ) {
 

@@ -7,16 +7,16 @@ Load options into support form
   window.loadOptions = function() {
     var count_list, countinterval, default_count, default_height, default_list, default_pop, default_width, hide_zero, i, listSel, listSelected, notify, openbehavior, taskLists;
     taskLists = chrome.extension.getBackgroundPage().taskLists;
-    hide_zero = localStorage.getItem("com.bit51.chrome.bettergoogletasks.hide_zero") || TASKS_ZERO;
-    default_count = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_count") || TASKS_COUNT;
-    countinterval = localStorage.getItem("com.bit51.chrome.bettergoogletasks.countinterval") || TASKS_COUNTINTERVAL;
-    count_list = localStorage.getItem("com.bit51.chrome.bettergoogletasks.count_list") || TASKS_LIST;
-    default_pop = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_pop") || TASKS_POPUP;
-    default_width = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_width") || TASKS_WIDTH;
-    default_height = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_height") || TASKS_HEIGHT;
-    notify = localStorage.getItem("com.bit51.chrome.bettergoogletasks.notify") || TASKS_NOTIFY;
-    openbehavior = localStorage.getItem("com.bit51.chrome.bettergoogletasks.openbehavior") || TASKS_OPENBEHAVIOR;
-    default_list = localStorage.getItem("com.bit51.chrome.bettergoogletasks.default_list") || TASKS_DEFAULT_LIST;
+    hide_zero = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.hide_zero") || TASKS_ZERO;
+    default_count = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_count") || TASKS_COUNT;
+    countinterval = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.countinterval") || TASKS_COUNTINTERVAL;
+    count_list = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.count_list") || TASKS_LIST;
+    default_pop = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_pop") || TASKS_POPUP;
+    default_width = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_width") || TASKS_WIDTH;
+    default_height = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_height") || TASKS_HEIGHT;
+    notify = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.notify") || TASKS_NOTIFY;
+    openbehavior = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.openbehavior") || TASKS_OPENBEHAVIOR;
+    default_list = localStorage.getItem("de.wedevelop.chrome.googletasksevolved.default_list") || TASKS_DEFAULT_LIST;
     $("input[name=hide_zero]").val([hide_zero]);
     $("input[name=default_count]").val([default_count]);
     $("input[name=count_list]").val([count_list]);
@@ -56,16 +56,16 @@ Load options into support form
     default_height = $("input[name=default_height]").val() || TASKS_HEIGHT;
     notify = $("input[name=notify]:checked").val() || TASKS_NOTIFY;
     openbehavior = $("input[name=openbehavior]:checked").val() || TASKS_OPENBEHAVIOR;
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.default_count", default_count);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.hide_zero", hide_zero);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.default_list", default_list);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.countinterval", countinterval);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.default_pop", default_pop);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.count_list", count_list);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.default_width", default_width);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.default_height", default_height);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.notify", notify);
-    localStorage.setItem("com.bit51.chrome.bettergoogletasks.openbehavior", openbehavior);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.default_count", default_count);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.hide_zero", hide_zero);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.default_list", default_list);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.countinterval", countinterval);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.default_pop", default_pop);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.count_list", count_list);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.default_width", default_width);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.default_height", default_height);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.notify", notify);
+    localStorage.setItem("de.wedevelop.chrome.googletasksevolved.openbehavior", openbehavior);
     port = chrome.extension.connect({
       name: "BGT"
     });
@@ -108,17 +108,17 @@ Load options into support form
 
   window.resetOptions = function() {
     var port;
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.default_count");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.hide_zero");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.default_list");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.countinterval");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.default_pop");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.count_list");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.default_width");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.default_height");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.notify");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.notifyExp");
-    localStorage.removeItem("com.bit51.chrome.bettergoogletasks.openbehavior");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.default_count");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.hide_zero");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.default_list");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.countinterval");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.default_pop");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.count_list");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.default_width");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.default_height");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.notify");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.notifyExp");
+    localStorage.removeItem("de.wedevelop.chrome.googletasksevolved.openbehavior");
     port = chrome.extension.connect({
       name: "BGT"
     });
@@ -130,7 +130,7 @@ Load options into support form
 
   $(document).ready(function() {
     loadOptions();
-    $("#extVersion").prepend(localStorage.getItem("com.bit51.chrome.bettergoogletasks.version"));
+    $("#extVersion").prepend(localStorage.getItem("de.wedevelop.chrome.googletasksevolved.version"));
     $("#saveOptions").click(function() {
       saveOptions();
     });

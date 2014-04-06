@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-# PROJECT: Better Google Tasks
+# PROJECT: Google Tasks Evolved
 #
 # AUTHOR : Niklas Heer (niklas.heer@gmail.com)
 # DATE   : 6.04.2014
-# LICENSE: GPL 3.0
+# LICENSE: GPL 2.0
 
 import os
 import glob
@@ -57,13 +57,13 @@ def createRelease(version):
 """
 	Main Programm
 """
-parser = argparse.ArgumentParser(description='This programm can build a release of the extension Better Google Tasks.')
+parser = argparse.ArgumentParser(description='This programm can build a release of the extension Google Tasks Evolved.')
 parser.add_argument('-v', '--version', help='The version number of the release. (e.g. 1.0.0)')
 parser.add_argument('-n', '--name', help='Releasename.')
 args = parser.parse_args()
 
 # Define global variables
-appName = "Better-Google-Tasks"
+appName = "Google-Tasks-Evolved"
 home = os.getcwd()
 
 file_sufix = "-"
